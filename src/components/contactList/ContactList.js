@@ -1,11 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filteredItemsSelector } from "../../redux/selector";
 import { removeContacts } from "../../redux/operations";
 import { styles } from "./ContactListStyles.module.css";
 
-const ContactList = ({ items, handleDelete }) => {
+const ContactList = () => {
+  const items = useSelector(filteredItemsSelector);
+
+  const dispatch = useDispatch();
+
+  const handleDelete = (id) => dispatch(removeContacts(id));
   return (
     <ul>
       {items.map(({ id, name, number }) => (
@@ -22,18 +26,4 @@ const ContactList = ({ items, handleDelete }) => {
   );
 };
 
-ContactList.propTypes = {
-  items: PropTypes.array.isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    items: filteredItemsSelector(state),
-  };
-};
-
-const mapDispatchToProps = {
-  handleDelete: removeContacts,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+export default ContactList;

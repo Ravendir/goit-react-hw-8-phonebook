@@ -1,14 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logoutOperation } from "../../redux/auth/authOperation";
-import {
-  getIsAuthenticated,
-  getUsername,
-} from "../../redux/auth/authSelectors";
+import { getUserInfo } from "../../redux/auth/authSelectors";
 import styles from "./NavBarStyles.module.css";
 
-const NavBar = ({ IsAuthenticated, logoutOperation, name }) => {
+const NavBar = () => {
+  const { token: IsAuthenticated, name } = useSelector(getUserInfo);
+  const dispatch = useDispatch();
+  const logout = () => dispatch(logoutOperation());
   return (
     <nav>
       <ul className={styles.ul}>
@@ -16,7 +16,9 @@ const NavBar = ({ IsAuthenticated, logoutOperation, name }) => {
           <>
             {" "}
             <li>
-              <NavLink to="/">HomePage</NavLink>
+              <NavLink exact to="/">
+                HomePage
+              </NavLink>
             </li>
             <li>
               <NavLink to="/contacts">ContactsPage</NavLink>
@@ -28,7 +30,7 @@ const NavBar = ({ IsAuthenticated, logoutOperation, name }) => {
                 className={styles.defAvatar}
               />
               <span className={styles.span}>Welcome, {name}</span>
-              <button type="button" onClick={logoutOperation}>
+              <button type="button" onClick={logout}>
                 Logout
               </button>
             </li>
@@ -53,13 +55,4 @@ const NavBar = ({ IsAuthenticated, logoutOperation, name }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  IsAuthenticated: getIsAuthenticated(state),
-  name: getUsername(state),
-});
-
-const mapDispatchToProps = {
-  logoutOperation,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default NavBar;
