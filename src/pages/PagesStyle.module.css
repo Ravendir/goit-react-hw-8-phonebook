@@ -1,0 +1,16 @@
+.homePageHeading {
+  color: rgb(211, 26, 26);
+  text-align: center;
+  margin-top: 50vh;
+  font-size: 35px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.contactPageHeading {
+  color: rgb(211, 26, 26);
+  text-align: left;
+  font-size: 25px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}

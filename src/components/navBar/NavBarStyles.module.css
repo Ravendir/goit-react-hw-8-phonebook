@@ -1,0 +1,29 @@
+.ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(211, 26, 26);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.span {
+  margin-right: 10px;
+  font-size: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: rgb(211, 26, 26);
+  font-weight: bold;
+}
+
+.defAvatar {
+  width: 25px;
+  margin-right: 10px;
+}
